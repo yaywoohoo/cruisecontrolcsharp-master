@@ -27,7 +27,7 @@ namespace CruiseControl
             // You are free to use as many powerup commands at any time. Any additional commands you give (past the number of active vessels) will be ignored.
 
           //			cmds.Add(new Command { vesselid = 1, action = "fire", coordinate = new Coordinate { X = 1, Y = 1 } });
-
+ /*
 
           if (_currentBoard.TurnsUntilBoardShrink < 2)
             {
@@ -118,7 +118,9 @@ namespace CruiseControl
                 }
             }
 
-
+ */
+            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[0].Id, action = "move:east" });
+            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[1].Id, action = "move:east" });
             return cmds;
         }
 
