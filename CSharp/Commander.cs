@@ -119,7 +119,7 @@ namespace CruiseControl
             }
 
  */
-            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[0].Id, action = "move:east" });
+            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[2].Id, action = "move:south" });
             cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[1].Id, action = "move:east" });
             return cmds;
         }
