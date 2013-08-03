@@ -27,7 +27,7 @@ namespace CruiseControl
             // You are free to use as many powerup commands at any time. Any additional commands you give (past the number of active vessels) will be ignored.
 
           //			cmds.Add(new Command { vesselid = 1, action = "fire", coordinate = new Coordinate { X = 1, Y = 1 } });
- /*
+
 
           if (_currentBoard.TurnsUntilBoardShrink < 2)
             {
@@ -77,11 +77,22 @@ namespace CruiseControl
                 }
             }
 
+          
+
             for (int i = 0; i < 3; i++)
             {
                 if (_currentBoard.MyVesselStatuses[i].Health / _currentBoard.MyVesselStatuses[i].MaxHealth <= .5)
                 {
-                    cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "repair" });
+                                        
+                    for (int j = 0;  j < _currentBoard.MyVesselStatuses[i].Location.Count; j++) {
+                        if (_currentBoard.MyVesselStatuses[i].DamagedSections[j] == true)
+                        {
+                            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "repair", coordinate = _currentBoard.MyVesselStatuses[i].Location[j] });
+                        }
+                    }
+                    
+
+                    
                 }
             }
 
@@ -118,7 +129,7 @@ namespace CruiseControl
                 }
             }
 
- */
+
             cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[2].Id, action = "move:south" });
             cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[1].Id, action = "move:east" });
             return cmds;
