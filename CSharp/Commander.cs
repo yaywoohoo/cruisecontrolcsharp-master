@@ -77,6 +77,13 @@ namespace CruiseControl
                 }
             }
 
+            for (int i = 0; i < 3; i++)
+            {
+                if (_currentBoard.MyVesselStatuses[i].Health / _currentBoard.MyVesselStatuses[i].MaxHealth <= .5)
+                {
+                    cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "repair" });
+                }
+            }
 
 
                 for (int i = 0; i < _currentBoard.CoordinatesFromTruces.Count; i++)
