@@ -33,33 +33,51 @@ namespace CruiseControl
             {
                 for (int i = 0; i < 3; i++)
                 {
-                    Boolean onEdge = false;
+
                     for (int j = 0; j < _currentBoard.MyVesselStatuses[i].Location.Count; j++)
                     {
                         if (_currentBoard.MyVesselStatuses[i].Location[j].X <= _currentBoard.BoardMinCoordinate.X +1 )
                         {
                             cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "move:east"});
+                            break;
                         }
 
                         if (_currentBoard.MyVesselStatuses[i].Location[j].Y <= _currentBoard.BoardMinCoordinate.Y + 1)
                         {
                             cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "move:south" });
+                            break;
                         }
 
                         if (_currentBoard.MyVesselStatuses[i].Location[j].X >= _currentBoard.BoardMaxCoordinate.X - 1)
                         {
                             cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "move:west" });
+                            break;
                         }
 
                         if (_currentBoard.MyVesselStatuses[i].Location[j].Y >= _currentBoard.BoardMinCoordinate.Y - 1)
                         {
                             cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "move:north" });
+                            break;
                         }
 
 
                     }
                 }
             }
+
+
+            for (int i = 0; i < 3; i++)
+            {
+
+                Random random = new Random();
+                int randomNumber = random.Next(0, 100);
+                if (randomNumber / 2 == 1)
+                {
+                    cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "load_countermeasures" });
+                }
+            }
+
+
 
                 for (int i = 0; i < _currentBoard.CoordinatesFromTruces.Count; i++)
             {
