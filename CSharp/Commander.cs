@@ -66,7 +66,7 @@ namespace CruiseControl
             }
 
 
-            for (int i = 0; i < 3; i++)
+ /*           for (int i = 0; i < 3; i++)
             {
 
                 Random random = new Random();
@@ -118,6 +118,8 @@ namespace CruiseControl
                    cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[j].Id, action = "fire", coordinate = Targets[i] });
                 }
             }
+
+  */
 
             return cmds;
         }
