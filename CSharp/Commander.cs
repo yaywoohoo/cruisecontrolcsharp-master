@@ -102,7 +102,7 @@ namespace CruiseControl
 
             }
 
-            for (int i = 0; i < 3; i++)
+/*            for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < _currentBoard.MyVesselStatuses[i].Location.Count; j++)
                 {
@@ -110,7 +110,7 @@ namespace CruiseControl
                 }
 
             }
-
+*/
 
 
             for (int i = 0; i < Targets.Count; i++) { 
