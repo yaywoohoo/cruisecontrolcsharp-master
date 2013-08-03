@@ -27,7 +27,46 @@ namespace CruiseControl
             // You are free to use as many powerup commands at any time. Any additional commands you give (past the number of active vessels) will be ignored.
 
           //			cmds.Add(new Command { vesselid = 1, action = "fire", coordinate = new Coordinate { X = 1, Y = 1 } });
-          
+
+
+            if (_currentBoard.TurnsUntilBoardShrink < 2)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    Boolean onEdge = false;
+                    for (int j = 0; j < _currentBoard.MyVesselStatuses[i].Location.Count; j++)
+                    {
+                        if (_currentBoard.MyVesselStatuses[i].Location[j].X <= _currentBoard.BoardMinCoordinate.X +1 )
+                        {
+                            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "move:east"});
+                        }
+
+                        if (_currentBoard.MyVesselStatuses[i].Location[j].Y <= _currentBoard.BoardMinCoordinate.Y + 1)
+                        {
+                            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "move:south" });
+                        }
+
+                        if (_currentBoard.MyVesselStatuses[i].Location[j].X >= _currentBoard.BoardMaxCoordinate.X - 1)
+                        {
+                            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "move:west" });
+                        }
+
+                        if (_currentBoard.MyVesselStatuses[i].Location[j].Y >= _currentBoard.BoardMinCoordinate.Y - 1)
+                        {
+                            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[i].Id, action = "move:north" });
+                        }
+
+
+                    }
+                }
+            }
+
+                for (int i = 0; i < _currentBoard.CoordinatesFromTruces.Count; i++)
+            {
+                Targets.Add(_currentBoard.CoordinatesFromTruces[i]);
+                
+            }
+
             for (int ship = 0; ship < 3; ship++) {
                 for (int targetNo = 0; ship < _currentBoard.MyVesselStatuses[ship].SonarReport.Count;targetNo++)
                 {
@@ -46,14 +85,13 @@ namespace CruiseControl
 
             }
 
-            for (int i = 0; i < _currentBoard.CoordinatesFromTruces.Count; i++)
-            {
-                Targets.Add(_currentBoard.CoordinatesFromTruces[i]);
-                
-            }
+        
 
             for (int i = 0; i < Targets.Count; i++) { 
-                   cmds.Add(new Command { vesselid = 1, action = "fire", coordinate = Targets[i] });
+                for (int j = 0; j < 3; j++){
+
+                   cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[j].Id, action = "fire", coordinate = Targets[i] });
+                }
             }
 
             return cmds;
