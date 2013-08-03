@@ -29,7 +29,7 @@ namespace CruiseControl
           //			cmds.Add(new Command { vesselid = 1, action = "fire", coordinate = new Coordinate { X = 1, Y = 1 } });
 
 
-   /*         if (_currentBoard.TurnsUntilBoardShrink < 2)
+          if (_currentBoard.TurnsUntilBoardShrink < 2)
             {
                 for (int i = 0; i < 3; i++)
                 {
@@ -92,8 +92,7 @@ namespace CruiseControl
                 
             }
 
-    * */
-            /*
+
             for (int ship = 0; ship < 3; ship++) {
                 for (int targetNo = 0; ship < _currentBoard.MyVesselStatuses[ship].SonarReport.Count;targetNo++)
                 {
@@ -103,7 +102,7 @@ namespace CruiseControl
 
             }
 
-/*            for (int i = 0; i < 3; i++)
+           for (int i = 0; i < 3; i++)
             {
                 for (int j = 0; j < _currentBoard.MyVesselStatuses[i].Location.Count; j++)
                 {
@@ -111,9 +110,7 @@ namespace CruiseControl
                 }
 
             }
-*/
 
-/*
             for (int i = 0; i < Targets.Count; i++) { 
                 for (int j = 0; j < 3; j++){
 
@@ -121,10 +118,7 @@ namespace CruiseControl
                 }
             }
 
- */
-            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[1].Id, action = "move:east" });
-            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[2].Id, action = "move:north" });
-            cmds.Add(new Command { vesselid = _currentBoard.MyVesselStatuses[3].Id, action = "move:east" });
+
             return cmds;
         }
 
